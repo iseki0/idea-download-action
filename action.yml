@@ -1,0 +1,32 @@
+name: 'IDEA download action'
+description: 'Greet someone'
+runs:
+  using: "composite"
+  steps:
+    - name: Creating directory
+      run: mkdir -p ~/idea
+      shell: bash
+
+    - name: Cache IDEA downloading
+      id: cache-idea
+      uses: actions/cache@v4
+      with:
+        path: ~/idea/idea-IC-*
+        key: ${{ runner.os }}-ideaIC-2024.3.1.1
+
+    - name: Install IntelliJ IDEA
+      shell: bash
+      if: steps.cache-idea.outputs.cache-hit != 'true'
+      run: curl https://download.jetbrains.com/idea/ideaIC-2024.3.1.1.tar.gz -L | tar -xzf - -C ~/idea
+
+    - name: Link scripts
+      run: |
+        ln -s ~/idea/idea-*/bin/idea.sh /usr/local/bin/idea
+        ln -s ~/idea/idea-*/bin/inspect.sh /usr/local/bin/inspect
+        ln -s ~/idea/idea-*/bin/format.sh /usr/local/bin/format
+        ln -s ~/idea/idea-*/bin/format.sh /usr/local/bin/idea-format
+      shell: bash
+
+    - name: Run IntelliJ format without any arguments
+      run: idea-format
+      shell: bash
