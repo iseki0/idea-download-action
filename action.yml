@@ -21,7 +21,7 @@ runs:
 
     - name: Link scripts
       run: |
-        ln -s ~/idea/idea-*/bin/idea.sh /usr/local/bin/idea
+        ln -s ~/idea/idea-*/bin/idea.sh /usr/local/bin/idea.sh
         ln -s ~/idea/idea-*/bin/inspect.sh /usr/local/bin/inspect
         ln -s ~/idea/idea-*/bin/format.sh /usr/local/bin/format
         ln -s ~/idea/idea-*/bin/format.sh /usr/local/bin/idea-format
