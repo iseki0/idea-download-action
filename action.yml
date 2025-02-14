@@ -17,7 +17,7 @@ runs:
     - name: Install IntelliJ IDEA
       shell: bash
       if: steps.cache-idea.outputs.cache-hit != 'true'
-      run: curl https://download.jetbrains.com/idea/ideaIC-2024.3.1.1.tar.gz -L | tar -xzf - -C ~/idea
+      run: curl https://download.jetbrains.com/idea/ideaIC-2024.3.3.tar.gz -L | tar -xzf - -C ~/idea
 
     - name: Link scripts
       run: |
