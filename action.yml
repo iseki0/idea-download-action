@@ -12,7 +12,7 @@ runs:
       uses: actions/cache@v4
       with:
         path: ~/idea/idea-IC-*
-        key: ${{ runner.os }}-ideaIC-2024.3.1.1
+        key: ${{ runner.os }}-ideaIC-2024.3.3
 
     - name: Install IntelliJ IDEA
       shell: bash
